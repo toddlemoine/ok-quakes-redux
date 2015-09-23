@@ -23,10 +23,16 @@ class App extends Component {
   render() {
     const {pathname} = this.props;
 
+    let content = <div>Loading</div>;
+
+    if (this.props.tweets) {
+      content = <RouteHandler {...this.props} key={pathname} />;
+    }
+
     return (
       <main style={{height: '700px', width: '700px', margin: '0 auto'}}>
         <Sidebar />
-        <RouteHandler {...this.props} key={pathname} />
+        {content}
       </main>
     );
   }
@@ -37,7 +43,9 @@ function mapStateToProps(state) {
     results: state.appReducer.results,
     dateRange: state.appReducer.dateRange,
     tweets: state.appReducer.tweets,
-    date: state.appReducer.date
+    date: state.appReducer.date,
+    city: state.appReducer.city,
+    cities: state.appReducer.cities
   };
 }
 

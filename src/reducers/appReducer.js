@@ -10,17 +10,19 @@ let initialState = {
     results: [],
 
     // crossfilter dimensions
-    tweets: [],
+    tweets: null,
     date: null,
     magnitude: null,
     hour: null,
     city: null,
+    day: null,
 
     // crossfilter groups
-    dates: [],
-    magnitudes: [],
-    hours: [],
-    cities: [],
+    dates: null,
+    magnitudes: null,
+    hours: null,
+    cities: null,
+    days: null
 };
 
 function initCrossfilter(state, tweets) {
@@ -54,7 +56,8 @@ function initCrossfilter(state, tweets) {
     state.hour = _tweets.dimension(d => d.date.getHours() + d.date.getMinutes() / 60);
     state.hours = state.hour.group(Math.floor);
 
-    state.city = _tweets.dimension(d => d.cityIndex);
+    // state.city = _tweets.dimension(d => d.cityIndex);
+    state.city = _tweets.dimension(d => d.city);
     state.cities = state.city.group();
 
     state.magnitude = _tweets.dimension(d => d.magnitude);

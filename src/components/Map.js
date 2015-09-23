@@ -13,7 +13,7 @@ const Map = React.createClass({
   },
 
   render() {
-    let top10 = this.props.date && this.props.date.top(Infinity) || [];
+    let top10 = this.props.date && this.props.date.top(10) || [];
 
     return (
       <div className="map" style={{height: '100%'}}>
