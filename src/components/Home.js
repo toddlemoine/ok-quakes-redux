@@ -23,6 +23,7 @@ class Home extends Component {
     return (
       <div class="home">
         <WeekdayCheckboxList onChange={this.handleDayChange} />
+        <CheckboxFilter filters={filters} label="Top" />
         <CheckboxList
           items={top10Cities.map(d => ({ label: d.key, value: d.value }) )}
           onChange={this.handleCityChange}
